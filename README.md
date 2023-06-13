@@ -11,9 +11,9 @@
 | attrs|                     |22.2.0|                            
 | backcall|                  |0.2.0|                 
 | cachetools|                | 5.3.0 |               
-| certifi|                              | 2022.12.7 |                   
-| chardet |                             | 4.0.0 |                        
-| charset-normalizer|                   | 3.1.0  |           
+| certifi|                   | 2022.12.7 |                   
+| chardet |                  | 4.0.0 |                        
+| charset-normalizer|        | 3.1.0 |           
 | clearml|                              | 1.10.3 |            
 | click |                               | 8.1.3|             
 | clip |                             | 0.2.0   |                                      
