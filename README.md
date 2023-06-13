@@ -124,7 +124,6 @@
    
 </details>  
 
-Implementation of paper - [YOLOv7: Trainable bag-of-freebies sets new state-of-the-art for real-time object detectors](https://arxiv.org/abs/2207.02696)
 
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/yolov7-trainable-bag-of-freebies-sets-new/real-time-object-detection-on-coco)](https://paperswithcode.com/sota/real-time-object-detection-on-coco?p=yolov7-trainable-bag-of-freebies-sets-new)
 [![Hugging Face Spaces](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-blue)](https://huggingface.co/spaces/akhaliq/yolov7)
@@ -150,28 +149,6 @@ MS COCO
 | [**YOLOv7-E6**](https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7-e6.pt) | 1280 | **56.0%** | **73.5%** | **61.2%** | 56 *fps* | 12.3 *ms* |
 | [**YOLOv7-D6**](https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7-d6.pt) | 1280 | **56.6%** | **74.0%** | **61.8%** | 44 *fps* | 15.0 *ms* |
 | [**YOLOv7-E6E**](https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7-e6e.pt) | 1280 | **56.8%** | **74.4%** | **62.1%** | 36 *fps* | 18.7 *ms* |
-
-## Installation
-
-Docker environment (recommended)
-<details><summary> <b>Expand</b> </summary>
-
-``` shell
-# create the docker container, you can change the share memory size if you have more.
-nvidia-docker run --name yolov7 -it -v your_coco_path/:/coco/ -v your_code_path/:/yolov7 --shm-size=64g nvcr.io/nvidia/pytorch:21.08-py3
-
-# apt install required packages
-apt update
-apt install -y zip htop screen libgl1-mesa-glx
-
-# pip install required packages
-# pip install seaborn thop
-
-# go to code folder
-cd /yolov7
-```
-
-</details>
 
 ## Evaluation
 
@@ -221,6 +198,9 @@ python train.py --workers 8 --device 3  --batch-size 8 --data data/blister.yaml 
 # Image size 640
 python train.py --workers 8 --device 1  --batch-size 8 --data data/blister.yaml --img 640  --cfg cfg/training/yolov7.yaml --weights 'yolov7.pt' --name yolov7 --hyp data/hyp.scratch.p5.yaml
 ```
+
+## Training result                                             
+[Weights and Bias running result](https://wandb.ai/huynguyen15/YOLOR/runs/6cj3l4xu?workspace=user-huynguyen15)               
 
 Multiple GPU training
 
