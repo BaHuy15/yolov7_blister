@@ -290,7 +290,7 @@ python train.py --workers 8 --device 1  --batch-size 8 --data data/blister.yaml 
 
 <details><summary> <b>Expand</b> </summary>
 
-* [Official Yolov7](https://github.com/WongKinYiu/yolov7)
+* [https://github.com/WongKinYiu/yolov7](https://github.com/WongKinYiu/yolov7)
 * [https://github.com/AlexeyAB/darknet](https://github.com/AlexeyAB/darknet)
 * [https://github.com/WongKinYiu/yolor](https://github.com/WongKinYiu/yolor)
 * [https://github.com/WongKinYiu/PyTorch_YOLOv4](https://github.com/WongKinYiu/PyTorch_YOLOv4)
