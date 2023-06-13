@@ -9,7 +9,7 @@ Implementation of paper - [YOLOv7: Trainable bag-of-freebies sets new state-of-t
 
 <div align="center">
     <a href="./">
-        <img src="./figure/performance.png" width="79%"/>
+        <img src="/home/tonyhuy/yolov7_blister/blister_data/predict_crop_data/image_9.png" width="79%"/>
     </a>
 </div>
 
