@@ -239,7 +239,7 @@ After running inference_blister.py,the results will be saved here:
 
 <div align="center">
     <a href="./">
-        <img alt="figure 1" src="./figure/result.jpg" width="100%"/>
+        <img alt="figure 1" src="./figure/result.jpg" width="75%"/>
     </a>
 </div>
 
