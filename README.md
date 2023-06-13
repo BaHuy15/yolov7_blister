@@ -3,8 +3,8 @@
 ## Install requirements
 ------------------------ --------------------
                                                  
-| Package | Version  |
-| :-- | :-: | :-: | :-: | :-: | :-: | :-: |
+| Package | Version  |                                                   
+<!-- | :-- | :-: | :-: | :-: | :-: | :-: | :-: |                              
 |absl-py  |              |1.4.0|                                                                                     
 | albumentations|            |1.3.0|                                    
 | appdirs|                   |1.4.4|               
@@ -113,7 +113,7 @@
 | Werkzeug |                            | 2.2.3 |                                        
 | wget  |                              |  3.2  |                   
 | wheel |                               | 0.40.0 |                        
-| zipp |                                | 3.15.0 |    
+| zipp |                                | 3.15.0 |     -->
 
             
 Implementation of paper - [YOLOv7: Trainable bag-of-freebies sets new state-of-the-art for real-time object detectors](https://arxiv.org/abs/2207.02696)
