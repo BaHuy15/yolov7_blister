@@ -621,7 +621,7 @@ class LoadImagesAndLabels(Dataset):  # for training/testing
         labels_out = torch.zeros((nL, 6))
         if nL:
             labels_out[:, 1:] = torch.from_numpy(labels)
-#=========================================Modify to train grayscale image==========================#
+        #=========================================Modify to train grayscale image==========================#
         gray_scale=True 
         if gray_scale:
             img = img[:, :, ::-1]
