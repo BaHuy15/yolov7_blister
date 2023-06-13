@@ -1,7 +1,7 @@
 # Detect blister status using YOLOv7 
 <div align="center">
     <a href="./">
-        <img src="./figure/project_image.png" width="100%"/>
+        <img src="./figure/project_image.png" width="75%"/>
     </a>
 </div>
 
