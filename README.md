@@ -5,6 +5,8 @@
                                                  
 | Package | Version  |  
 | Model | Test Size | AP<sup>test</sup> | AP<sub>50</sub><sup>test</sup> | AP<sub>75</sub><sup>test</sup> | batch 1 fps | batch 32 average time |
+| :-- | :-: | :-: | :-: | :-: | :-: | :-: |
+
 
 <!-- | :-- | :-: | :-: | :-: | :-: | :-: | :-: |                              
 |absl-py  |              |1.4.0|                                                                                     
