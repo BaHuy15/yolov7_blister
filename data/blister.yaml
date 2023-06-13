@@ -1,0 +1,11 @@
+# train and val data as 1) directory: path/images/, 2) file: path/images.txt, or 3) list: [path1/images/, path2/images/]
+path: /home/tonyhuy/yolov7_blister/blister_data/
+train: blister_data/images/train #blister_data/images/train
+val: blister_data/images/val 
+test: /home/tonyhuy/yolov7/blister_data/images/test  
+
+# number of classes
+nc: 2
+
+# class names
+names: [ 'blister_on_hand', 'blister']
