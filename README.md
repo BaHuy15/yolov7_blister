@@ -204,7 +204,7 @@ python train.py --workers 8 --device 1  --batch-size 8 --data data/blister.yaml 
 
 <div align="center">
     <a href="./">
-        <img src="./figure/image_38.png" width="100%"/>
+        <img src="./figure/img.png" width="100%"/>
     </a>
 </div>
 
