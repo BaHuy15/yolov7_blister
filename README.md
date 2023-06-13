@@ -133,14 +133,14 @@
 ## Data Format
 <details><summary> <b>Expand</b> </summary>  
 Yolov7_blister
-    |
-    |____blister_data                                        
-    |        |
-    |        |________crop_external_img                                        
-    |        |
-    |        |________crop_img                              
-    |        |
-    |        |_____images                       
+       |
+       |____blister_data                                        
+       |         |
+       |         |________crop_external_img                                        
+       |        |
+       |        |________crop_img                              
+       |        |
+       |        |_____images                       
     |        |       |_________blister                                          
     |        |       |_________images                        
     |        |       |_________test   # Test image                           
