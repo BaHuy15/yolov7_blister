@@ -134,9 +134,9 @@
 <details><summary> <b>Expand</b> </summary> 
 
 ``` shell 
-Yolov7_blister
+Yolov7_blister                              
     |
-    |____blister_data                                        
+    |____blister_data                                                                             
     |        |
     |        |________crop_external_img                                        
     |        |
@@ -194,21 +194,20 @@ Yolov7_blister
     |
     |______wandb                                 
     |       
-    |______detect.py                       
+    |______detect.py # run inference file                      
     |
     |______export.py                  
     |
     |______hubconf.py                    
     |
-    |______inference_blisters.py                      
+    |______inference_blisters.py # Evaluate on new data                     
     |
-    |______test.py                       
+    |______test.py   # Test                   
     |
-    |______train.py          
+    |______train.py  # Train         
     |
     |______train_aux.py  
 
-    
 ```                                             
 
 </details>  
