@@ -1,6 +1,6 @@
 # Detect blister status using YOLOv7
 
-In this project, we applied yolov7 to localize bounding box of blisters and classify them to see whether or not they are on hand. To ilustrate this, see figure 1 below.
+In this project, we applied yolov7 to localize bounding box of blisters and classify them to see whether or not they are on hand. To ilustrate this, see figure below.
 <div align="center">
     <a href="./">
         <img alt="figure 1" src="./figure/project_image.jpg" width="100%"/>
