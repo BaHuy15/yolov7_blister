@@ -200,7 +200,14 @@ python train.py --workers 8 --device 1  --batch-size 8 --data data/blister.yaml 
 ```
 
 ## Training result                                             
-[Weights and Bias running result](https://wandb.ai/huynguyen15/YOLOR/runs/6cj3l4xu?workspace=user-huynguyen15)               
+[Weights and Bias running result](https://wandb.ai/huynguyen15/YOLOR/runs/6cj3l4xu?workspace=user-huynguyen15)  
+
+<div align="center">
+    <a href="./">
+        <img src="./figure/image_38.png" width="100%"/>
+    </a>
+</div>
+
 
 Multiple GPU training
 
