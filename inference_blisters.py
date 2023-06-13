@@ -59,7 +59,7 @@ class Prediction():
         self.fp16 = fp16
         #================Modify=================#
         self.trace=True
-        self.gray_scale=True
+        self.gray_scale=True # False ---> train RGB
         self.batch_size = batch_size
         self.save_dir = save_dir
         self.class_names = class_name #None #yaml_load(data)['names'] if data else {i: f'class{i}' for i in range(999)}
@@ -242,7 +242,7 @@ def main():
     for path in img_path:
         img=cv2.imread(path)
         images.append(img)
-    batch_size=60 #in cropdata have 41 image
+    batch_size=60 #in cropdata have 60 images,number of batch size = number of image in inference file
     data = None#'yolov5_inference/data/coco128.yaml'
     cfg=Prediction(weights,class_name,img_size = img_size, device = device, fp16 = False, batch_size = batch_size, conf_thresh=conf_thresh,
                 data = data, save_dir = save_dir)
