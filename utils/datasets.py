@@ -621,11 +621,16 @@ class LoadImagesAndLabels(Dataset):  # for training/testing
         labels_out = torch.zeros((nL, 6))
         if nL:
             labels_out[:, 1:] = torch.from_numpy(labels)
-
-        # Convert
-        img = img[:, :, ::-1].transpose(2, 0, 1)  # BGR to RGB, to 3x416x416
-        img = np.ascontiguousarray(img)
-
+#=========================================Modify to train grayscale image==========================#
+        gray_scale=True 
+        if gray_scale:
+            img = img[:, :, ::-1]
+            img=cv2.cvtColor(img,cv2.COLOR_BGR2GRAY).reshape(img.shape[0],img.shape[1],1)
+            img=img.transpose(2,0,1)
+        else:
+            # Convert
+            img = img[:, :, ::-1].transpose(2, 0, 1)  # BGR to RGB, to 3x416x416
+            img = np.ascontiguousarray(img)
         return torch.from_numpy(img), labels_out, self.img_files[index], shapes
 
     @staticmethod
