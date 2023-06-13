@@ -6,7 +6,7 @@
     </a>
 </div>
 
-## Install requirements
+## Install Requirements
 ------------------------ --------------------
 <details><summary> <b>Expand</b> </summary>                  
                                                                   
@@ -130,8 +130,84 @@
 <a href="https://colab.research.google.com/gist/AlexeyAB/b769f5795e65fdab80086f6cb7940dae/yolov7detection.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a>
 [![arxiv.org](http://img.shields.io/badge/cs.CV-arXiv%3A2207.02696-B31B1B.svg)](https://arxiv.org/abs/2207.02696)
 
+## Data Format
+<details><summary> <b>Expand</b> </summary>  
+Yolov7_blister
+    |
+    |____blister_data                                        
+    |        |
+    |        |________crop_external_img                                        
+    |        |
+    |        |________crop_img                              
+    |        |
+    |        |_____images                       
+    |        |       |_________blister                                          
+    |        |       |_________images                        
+    |        |       |_________test   # Test image                           
+    |        |       |_________train  # Train image                 
+    |        |       |_________val    # Validation data                         
+    |        |
+    |        |______labels                       
+    |        |        |
+    |        |        |____train                     
+    |        |        |      |______.txt                  
+    |        |        |
+    |        |        |____val                    
+    |        |        |      |_______.txt                             
+    |        |        |
+    |        |        |____classes.txt                      
+    |        |
+    |        |______predict_crop_data # images will be saved when run inference_blisters.py                                     
+    |        |
+    |        |______predict_test_data # images will be saved when run inference_blisters.py       
+    |
+    |______cfg            
+    |
+    |______command                    
+    |         |______run.sh           
+    |
+    |______data         
+    |         |_______blister.yaml                          
+    |         |_______coco.yaml                      
+    |         |_______hyp.scratch.custom.yaml                         
+    |         |_______hyp.scratch.p5.yaml                        
+    |         |_______hyp.scratch.p6.yaml                       
+    |         |_______hyp.scratch.tiny.yaml                     
+    |
+    |______deploy               
+    |
+    |______figure                           
+    |
+    |______models                        
+    |
+    |______paper                     
+    |
+    |______runs                 
+    |
+    |______scripts                       
+    |
+    |______tools             
+    |
+    |______utils                       
+    |
+    |______wandb                                 
+    |       
+    |______detect.py                       
+    |
+    |______export.py                  
+    |
+    |______hubconf.py                    
+    |
+    |______inference_blisters.py                      
+    |
+    |______test.py                       
+    |
+    |______train.py          
+    |
+    |______train_aux.py                                        
 
-
+</details>  
+            
 ## Web Demo
 
 - Integrated into [Huggingface Spaces 🤗](https://huggingface.co/spaces/akhaliq/yolov7) using Gradio. Try out the Web Demo [![Hugging Face Spaces](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-blue)](https://huggingface.co/spaces/akhaliq/yolov7)
@@ -151,7 +227,7 @@ MS COCO
 | [**YOLOv7-E6E**](https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7-e6e.pt) | 1280 | **56.8%** | **74.4%** | **62.1%** | 36 *fps* | 18.7 *ms* |
 
 
-## Download Yolov7 weights                                                        
+## Download Yolov7 Weights                                                        
 [`yolov7.pt`](https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7.pt) [`yolov7x.pt`](https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7x.pt) [`yolov7-w6.pt`](https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7-w6.pt) [`yolov7-e6.pt`](https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7-e6.pt) [`yolov7-d6.pt`](https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7-d6.pt) [`yolov7-e6e.pt`](https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7-e6e.pt)           
 
 ## Evaluation   
@@ -159,7 +235,7 @@ MS COCO
 # python test.py --data data/coco.yaml --img 640 --batch 32 --conf 0.001 --iou 0.65 --device 0 --weights yolov7.pt --name yolov7_640_val
 python inference_blisters.py   
 ```
-You will get the results:
+The results will be saved here:
 
 ```
  Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.51206
