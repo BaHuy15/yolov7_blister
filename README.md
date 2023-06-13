@@ -131,16 +131,18 @@
 [![arxiv.org](http://img.shields.io/badge/cs.CV-arXiv%3A2207.02696-B31B1B.svg)](https://arxiv.org/abs/2207.02696)
 
 ## Data Format
-<details><summary> <b>Expand</b> </summary>  
+<details><summary> <b>Expand</b> </summary> 
+
+``` shell 
 Yolov7_blister
-       |
-       |____blister_data                                        
-       |         |
-       |         |________crop_external_img                                        
-       |        |
-       |        |________crop_img                              
-       |        |
-       |        |_____images                       
+    |
+    |____blister_data                                        
+    |        |
+    |        |________crop_external_img                                        
+    |        |
+    |        |________crop_img                              
+    |        |
+    |        |_____images                       
     |        |       |_________blister                                          
     |        |       |_________images                        
     |        |       |_________test   # Test image                           
@@ -204,7 +206,10 @@ Yolov7_blister
     |
     |______train.py          
     |
-    |______train_aux.py                                        
+    |______train_aux.py  
+
+    
+```                                             
 
 </details>  
             
