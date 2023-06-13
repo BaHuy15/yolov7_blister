@@ -5,12 +5,12 @@
                                                  
 | Package | Version  |  
 | :-- | :-: |
-|absl-py| |1.4.0|   
-|albumentations||1.3.0|
-|appdirs||1.4.4|               
-|attrs||22.2.0|
-| backcall||0.2.0|                 
-| cachetools|| 5.3.0 |               
+|absl-py| | **1.4.0** |   
+|albumentations|| **1.3.0** |
+|appdirs||  **1.4.4** |               
+|attrs||  **22.2.0**  |
+| backcall|| **0.2.0**  |                 
+| cachetools||  **5.3.0**  |               
 | certifi|| 2022.12.7 |                   
 | chardet || 4.0.0 |
 |charset-normalizer| | 3.1.0 | 
