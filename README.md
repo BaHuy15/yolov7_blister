@@ -8,7 +8,7 @@
 
 ## Install requirements
 ------------------------ --------------------
-                                                 
+<details><summary> <b>Expand</b> </summary>                                                 
 | Package | Version  |  
 | :-- | :-: |
 |absl-py|**1.4.0**|   
@@ -120,7 +120,9 @@
 | wget  |**3.2**  |                   
 | wheel |**0.40.0**|                        
 | zipp |**3.15.0**| 
-            
+
+</details>  
+
 Implementation of paper - [YOLOv7: Trainable bag-of-freebies sets new state-of-the-art for real-time object detectors](https://arxiv.org/abs/2207.02696)
 
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/yolov7-trainable-bag-of-freebies-sets-new/real-time-object-detection-on-coco)](https://paperswithcode.com/sota/real-time-object-detection-on-coco?p=yolov7-trainable-bag-of-freebies-sets-new)
@@ -211,11 +213,12 @@ bash scripts/get_coco.sh
 Single GPU training
 
 ``` shell
-# train p5 models
-python train.py --workers 8 --device 0 --batch-size 32 --data data/coco.yaml --img 640 640 --cfg cfg/training/yolov7.yaml --weights '' --name yolov7 --hyp data/hyp.scratch.p5.yaml
+#____________________________________________ Run training file___________________________________________________#
+# Image size 320
+python train.py --workers 8 --device 3  --batch-size 8 --data data/blister.yaml --img 320  --cfg cfg/training/yolov7.yaml --weights 'yolov7.pt' --name yolov7 --hyp data/hyp.scratch.p5.yaml
 
-# train p6 models
-python train_aux.py --workers 8 --device 0 --batch-size 16 --data data/coco.yaml --img 1280 1280 --cfg cfg/training/yolov7-w6.yaml --weights '' --name yolov7-w6 --hyp data/hyp.scratch.p6.yaml
+# Image size 640
+python train.py --workers 8 --device 1  --batch-size 8 --data data/blister.yaml --img 640  --cfg cfg/training/yolov7.yaml --weights 'yolov7.pt' --name yolov7 --hyp data/hyp.scratch.p5.yaml
 ```
 
 Multiple GPU training
