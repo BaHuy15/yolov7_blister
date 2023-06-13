@@ -7,6 +7,18 @@ In this project, we applied yolov7 to localize bounding box of blisters and clas
     </a>
 </div>
 
+## Table of Contents
+
+- [Table of Contents](#table-of-contents)
+- [Install Requirements](#Install-Requirements)
+- [Data Format](#Data-Format)
+- [Download Yolov7 Weights](#Download-Yolov7-Weights)
+- [Evaluation](#Evaluation )
+- [Training](#Training)
+- [Result](#Result)
+- [Citation](#Citation)
+- [Acknowledgement](#Acknowledgements)
+
 ## Install Requirements
 ------------------------ --------------------
 <details><summary> <b>Expand</b> </summary>                  
@@ -241,7 +253,7 @@ The results will be saved here:
 
 ```
 
-Single GPU training
+## Training
 
 ``` shell
 #____________________________________________ Run training file___________________________________________________#
