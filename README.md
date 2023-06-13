@@ -1,6 +1,6 @@
 # Detect blister status using YOLOv7
 
-In this project, we applied yolov7 to localize bounding box of blisters and classify them to see whether or not they're on hand or on tables. This is shown in figure 1.
+In this project, we applied yolov7 to localize bounding box of blisters and classify them to see whether or not they are on hand. To ilustrate this, see figure 1 below.
 <div align="center">
     <a href="./">
         <img alt="figure 1" src="./figure/project_image.jpg" width="100%"/>
@@ -213,10 +213,6 @@ Yolov7_blister
 
 </details>  
             
-
-
-
-
 ## Download Yolov7 Weights                                                        
 [`yolov7.pt`](https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7.pt) [`yolov7x.pt`](https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7x.pt) [`yolov7-w6.pt`](https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7-w6.pt) [`yolov7-e6.pt`](https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7-e6.pt) [`yolov7-d6.pt`](https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7-d6.pt) [`yolov7-e6e.pt`](https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7-e6e.pt)           
 
@@ -242,6 +238,7 @@ The results will be saved here:
  Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.53766
  Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.73549
  Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.83868
+
 ```
 
 Single GPU training
