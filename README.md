@@ -2,7 +2,7 @@
 
 <div align="center">
     <a href="./">
-        <img src="./figure/image_38.png" width="100%"/>
+        <img src="./figure/project_image.png" width="100%"/>
     </a>
 </div>
 
@@ -212,9 +212,7 @@ Yolov7_blister
 
 </details>  
             
-## Web Demo
 
-- Integrated into [Huggingface Spaces 🤗](https://huggingface.co/spaces/akhaliq/yolov7) using Gradio. Try out the Web Demo [![Hugging Face Spaces](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-blue)](https://huggingface.co/spaces/akhaliq/yolov7)
 
 
 
@@ -224,7 +222,9 @@ Yolov7_blister
 ## Evaluation   
 ``` shell
 # python test.py --data data/coco.yaml --img 640 --batch 32 --conf 0.001 --iou 0.65 --device 0 --weights yolov7.pt --name yolov7_640_val
-python inference_blisters.py   
+python inference_blisters.py 
+python detect.py --weights /home/tonyhuy/yolov7/runs/train/yolov725/weights/last.pt --device 1 --conf 0.3 --iou-thres 0.4 --img-size 320 --source /home/tonyhuy/yolov7/blister_data/images/test
+
 ```
 The results will be saved here:
 
@@ -282,6 +282,9 @@ python train.py --workers 8 --device 1  --batch-size 8 --data data/blister.yaml 
   year={2022}
 }
 ```
+## Web Demo
+
+- Integrated into [Huggingface Spaces 🤗](https://huggingface.co/spaces/akhaliq/yolov7) using Gradio. Try out the Web Demo [![Hugging Face Spaces](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-blue)](https://huggingface.co/spaces/akhaliq/yolov7)
 
 ## Acknowledgements
 
