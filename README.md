@@ -2,9 +2,10 @@
 
 <div align="center">
     <a href="./">
-        <img src="./figure/image_9.png" width="100%"/>
+        <img src="./figure/image_38.png" width="100%"/>
     </a>
 </div>
+
 ## Install requirements
 ------------------------ --------------------
                                                  
