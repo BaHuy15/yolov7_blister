@@ -219,20 +219,20 @@ class Prediction():
 
         print('Speed: %.1fms ; pre-process: %.1fms, inference: %.1fms, NMS: %.1fms per %d images at shape %s'
               % (total, preprocess, inference, nms, self.batch_size, self.img_size))
-def run_dataset(path):
+def save_run(path):
     # Save directory
     if path.endswith('crop_img'):
-        save_dir_1='/home/tonyhuy/yolov7/save_dir/predict_crop_data'
+        save_dir_1='/home/tonyhuy/yolov7_blister/blister_data/predict_crop_data'
         return save_dir_1
     if path.endswith('test'):
-        save_dir_2='/home/tonyhuy/yolov7/save_dir/predict_test_data'
+        save_dir_2='/home/tonyhuy/yolov7_blister/blister_data/predict_test_data'
         return save_dir_2
 def main():
     # path to weights file this file train grayscale image [1,h,w]
     weights='/home/tonyhuy/yolov7/runs/train/yolov749/weights/last.pt'
     #path to folder contains image
-    path='/home/tonyhuy/yolov7/blister_data/crop_img' # '/home/tonyhuy/yolov7/blister_data/images/test'
-    save_dir=run_dataset(path)
+    path='/home/tonyhuy/yolov7_blister/blister_data/crop_img' # '/home/tonyhuy/yolov7/blister_data/images/test'
+    save_dir=save_run(path)
     device = '0'
     img_size = 640
     conf_thresh = 0.5
@@ -242,13 +242,12 @@ def main():
     for path in img_path:
         img=cv2.imread(path)
         images.append(img)
-    batch_size=len(images)
+    batch_size=60 #in cropdata have 41 image
     data = None#'yolov5_inference/data/coco128.yaml'
     cfg=Prediction(weights,class_name,img_size = img_size, device = device, fp16 = False, batch_size = batch_size, conf_thresh=conf_thresh,
                 data = data, save_dir = save_dir)
     
     pred=cfg.predict(images, crop_coordinate = None, use_contrast = False)
-    print(pred)
 
 
 # demo
