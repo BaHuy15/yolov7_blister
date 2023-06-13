@@ -124,7 +124,7 @@ Implementation of paper - [YOLOv7: Trainable bag-of-freebies sets new state-of-t
 
 <div align="center">
     <a href="./">
-        <img src="/home/tonyhuy/yolov7_blister/figure/image_9.png" width="79%"/>
+        <img src="./figure/image_9.png" width="79%"/>
     </a>
 </div>
 
