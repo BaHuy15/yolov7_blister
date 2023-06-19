@@ -250,10 +250,10 @@ After running inference_blister.py,the results will be saved here:
 ## Generate augmentation data
 Run this script to generate augmented images.
 ``` shell
-# If save augmented data, add argument '--save'
+# If save augmented data,use this command
 python hand_augment.py  --path /home/tonyhuy/yolov7_blister/blister_data/images/test/ --save --save_dir /home/tonyhuy/yolov7_blister/augmented_data --augment_yaml data/augment_list.yaml 
 
-# If not save augmented data, add argument 
+# If not save augmented data, use this command
 python hand_augment.py  --path /home/tonyhuy/yolov7_blister/blister_data/images/test/ --save_dir /home/tonyhuy/yolov7_blister/augmented_data --augment_yaml data/augment_list.yaml 
 
 ```
