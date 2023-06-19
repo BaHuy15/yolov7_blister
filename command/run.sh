@@ -7,3 +7,9 @@ python train.py --workers 8 --device 1  --batch-size 8 --data data/blister.yaml 
 
 #_______________________________ Run inference file____________________________________#
 python inference_blisters.py
+
+#_______________________________ Generate augment data____________________________________#
+python hand_augment.py  --path /home/tonyhuy/yolov7_blister/blister_data/images/test/ --save --save_dir /home/tonyhuy/yolov7_blister/augmented_data --augment_yaml data/augment_list.yaml 
+
+
+
