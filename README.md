@@ -12,6 +12,7 @@ In this project, we applied yolov7 to localize bounding box of blisters and clas
 - [Table of Contents](#table-of-contents)
 - [Install Requirements](#Install-Requirements)
 - [Data Format](#Data-Format)
+- [Generate auto-augmented data](#Generate-augmentation-data)
 - [Download Yolov7 Weights](#Download-Yolov7-Weights)
 - [Evaluation](#Evaluation )
 - [Training](#Training)
@@ -83,7 +84,7 @@ In this project, we applied yolov7 to localize bounding box of blisters and clas
 | pkgutil_resolve_name| **1.3.10**|                  
 | prompt-toolkit|**3.0.38**|                                                     
 | protobuf|**3.20.1**|                         
-| psutil|**5.9.4**|                                      
+| psutil|**5.9.4**|                            
 | ptyprocess|**0.7.0**|                                
 | pyasn1|**0.4.8**|                 
 | pyasn1-modules|**0.2.8** |           
@@ -147,7 +148,9 @@ In this project, we applied yolov7 to localize bounding box of blisters and clas
 <details><summary> <b>Expand</b> </summary> 
 
 ``` shell 
-Yolov7_blister                              
+Yolov7_blister 
+    |
+    |____augmented_data                             
     |
     |____blister_data                                                                             
     |        |
@@ -224,7 +227,8 @@ Yolov7_blister
 ```                                             
 
 </details>  
-            
+
+
 ## Download Yolov7 Weights                                                        
 [`yolov7.pt`](https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7.pt) [`yolov7x.pt`](https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7x.pt) [`yolov7-w6.pt`](https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7-w6.pt) [`yolov7-e6.pt`](https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7-e6.pt) [`yolov7-d6.pt`](https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7-d6.pt) [`yolov7-e6e.pt`](https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7-e6e.pt)           
 
@@ -242,6 +246,11 @@ After running inference_blister.py,the results will be saved here:
         <img alt="figure 1" src="./figure/result.jpg" width="70%"/>
     </a>
 </div>
+
+## Generate augmentation data
+``` shell
+python hand_augment.py
+```
 
 ## Training
 
