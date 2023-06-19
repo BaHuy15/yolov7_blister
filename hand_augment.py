@@ -2,6 +2,9 @@ import albumentations as A
 import cv2
 from enum import IntEnum
 import glob
+import argparse
+import yaml
+
 
 class ImageCompressionType(IntEnum):
     JPEG = 0
@@ -48,19 +51,25 @@ class Auto_augment():
         if self.save:
             cv2.imwrite(f'{self.save_dir}/test_{self.name}_{self.augment_name}.png',transformed_image)
         return transformed_image
-save=True
-# idx=8 #'RandomCrop','HorizontalFlip',
-augment_name=['RGBShift','HueSaturation',
-              'ChannelShuffle','CLAHE','RandomContrast','Random_brightness_Contrast','RandomGamma','Blur','MedianBlur','ToGray','ImageCompression',
-              ]
-test_path='/home/tonyhuy/yolov7_blister/blister_data/images/test/'
-save_dir='/home/tonyhuy/yolov7_blister/augmented_data'
-img_dir=sorted(glob.glob(f'{test_path}/*.png'))
-for path in img_dir:
-    for idx in range(len(augment_name)):
-        aug=Auto_augment(path,idx,save_dir,augment_name,save)
-        image=aug.transform()
+    
+def main(opt):
+    with open(opt.augment_yaml, 'r') as file:
+        augment_name= yaml.safe_load(file)['augment_name']
+    img_dir=sorted(glob.glob(f'{opt.path}/*.png'))
+    for path in img_dir:
+        for idx in range(len(augment_name)):
+            aug=Auto_augment(path,idx,opt.save_dir,augment_name,opt.save)
+            image=aug.transform()
 
+def args():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--path', type=str, default='/home/tonyhuy/yolov7_blister/blister_data/images/test/', help='this is path to image')
+    parser.add_argument('--save', action='store_true', help='save augmented images')
+    parser.add_argument('--save_dir', type=str, default='/home/tonyhuy/yolov7_blister/augmented_data', help='this is where aug images are saved')
+    parser.add_argument('--augment_yaml', type=str, default='/home/tonyhuy/yolov7_blister/data/augment_list.yaml', help='this is where aug images are saved')
+    opt = parser.parse_args()
+    return opt
 
-
-
+if __name__=="__main__":
+    opt=args()
+    main(opt)
