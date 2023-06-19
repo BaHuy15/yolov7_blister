@@ -5,7 +5,6 @@ import glob
 import argparse
 import yaml
 
-
 class ImageCompressionType(IntEnum):
     JPEG = 0
     WEBP = 1
