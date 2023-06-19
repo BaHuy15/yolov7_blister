@@ -1,0 +1,12 @@
+augment_name:
+            ['RGBShift',
+              'HueSaturation',
+              'ChannelShuffle',
+              'CLAHE',
+              'RandomContrast',
+              'Random_brightness_Contrast',
+              'RandomGamma',
+              'Blur',
+              'MedianBlur',
+              'ToGray',
+              'ImageCompression',]
