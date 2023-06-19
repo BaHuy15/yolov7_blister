@@ -32,12 +32,13 @@ from utils.general import scale_coords as scale_boxes
 from utils.plots import plot_one_box
 # from yolo_utils.torch_utils import select_device, smart_inference_mode
 from utils.torch_utils import select_device, load_classifier, time_synchronized, TracedModel
+import yaml
 
 class Prediction():
     """
     Prediction class used for running the predictions yolov5 model
     """
-    def __init__(self, weights,class_name, img_size = 1024, device = 0, fp16 = False, batch_size = 1, conf_thresh = 0.5,
+    def __init__(self, gray_scale,weights,class_name, img_size = 1024, device = 0, fp16 = False, batch_size = 1, conf_thresh = 0.5,
                 data = 'yolov5_inference/data/coco128.yaml', save_dir = None):
         """
         Initializes the prediction with the specified weights, image size, device, precision type, batch size,
@@ -59,7 +60,7 @@ class Prediction():
         self.fp16 = fp16
         #================Modify=================#
         self.trace=True
-        self.gray_scale=True # False ---> train RGB
+        self.gray_scale=gray_scale # False ---> train RGB
         self.batch_size = batch_size
         self.save_dir = save_dir
         self.class_names = class_name #None #yaml_load(data)['names'] if data else {i: f'class{i}' for i in range(999)}
@@ -202,7 +203,7 @@ class Prediction():
                     preds[i][j][2] = preds[i][j][2] + crop_coordinate[0]
                     preds[i][j][3] = preds[i][j][3] + crop_coordinate[1]
 
-        return preds
+        
 
     def check_input_images(self, images):
         assert isinstance(images, list), "images param should be a list of images, [image1,..image_n]"
@@ -227,29 +228,47 @@ def save_run(path):
     if path.endswith('test'):
         save_dir_2='/home/tonyhuy/yolov7_blister/blister_data/predict_test_data'
         return save_dir_2
-def main():
-    # path to weights file this file train grayscale image [1,h,w]
-    weights='/home/tonyhuy/yolov7/runs/train/yolov749/weights/last.pt'
-    #path to folder contains image
-    path='/home/tonyhuy/yolov7_blister/blister_data/crop_img' # '/home/tonyhuy/yolov7/blister_data/images/test'
-    save_dir=save_run(path)
-    device = '0'
-    img_size = 640
-    conf_thresh = 0.5
-    class_name=['blister_on_hand','blister']
+    
+def get_image_list(path):
     images=[]
-    img_path=glob.glob(f'{path}/*.png')
+    img_path=glob.glob(f'{opt.path}/*.png')
     for path in img_path:
         img=cv2.imread(path)
         images.append(img)
-    batch_size=60 #in cropdata have 60 images,number of batch size = number of image in inference file
+    return images
+
+
+def args():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--gray_scale',action='store_true',help='Inference grayscale image')
+    parser.add_argument('--weights', type=str, default='/home/tonyhuy/yolov7/runs/train/yolov749/weights/last.pt', help='path to weights file this file train grayscale image [1,h,w]')
+    parser.add_argument('--image_size', type=int, default=640, help='image size')
+    parser.add_argument('--device',type=str,default='2',help='choose device for inference')
+    parser.add_argument('--path',type=str,default='/home/tonyhuy/yolov7_blister/blister_data/crop_img')
+    parser.add_argument('--conf_thresh', type=float, default=0.5, help='image size')
+    parser.add_argument('--batch_size', type=int, default=60, help='number of batch size = number of image in inference file')
+    parser.add_argument('--class_name', type=str, default='/home/tonyhuy/yolov7_blister/data/blister.yaml', help='number of batch size = number of image in inference file')
+    opt = parser.parse_args()
+    return opt
+
+
+def main(opt):
+    save_dir=save_run(opt.path)
+    with open(opt.class_name, 'r') as file:
+        class_name= yaml.safe_load(file)['names']
+    images=[]
+    img_path=glob.glob(f'{opt.path}/*.png')
+    for path in img_path:
+        img=cv2.imread(path)
+        images.append(img)
+    # images=get_image_list(path)
     data = None#'yolov5_inference/data/coco128.yaml'
-    cfg=Prediction(weights,class_name,img_size = img_size, device = device, fp16 = False, batch_size = batch_size, conf_thresh=conf_thresh,
+    cfg=Prediction(opt.gray_scale,opt.weights,class_name,img_size = opt.image_size, device = opt.device, fp16 = False, batch_size = opt.batch_size, conf_thresh=opt.conf_thresh,
                 data = data, save_dir = save_dir)
     
-    pred=cfg.predict(images, crop_coordinate = None, use_contrast = False)
-
+    cfg.predict(images, crop_coordinate = None, use_contrast = False)
 
 # demo
 if __name__=='__main__':
-    main()
+    opt=args()
+    main(opt)
