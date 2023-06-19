@@ -235,7 +235,12 @@ Yolov7_blister
 ## Evaluation   
 ``` shell
 # python test.py --data data/coco.yaml --img 640 --batch 32 --conf 0.001 --iou 0.65 --device 0 --weights yolov7.pt --name yolov7_640_val
-python inference_blisters.py 
+#If inference grayscale
+python inference_blisters.py --gray_scale --weights /home/tonyhuy/yolov7/runs/train/yolov749/weights/last.pt --image_size 640  --device '2' --path /home/tonyhuy/yolov7_blister/blister_data/crop_img --conf_thresh 0.5 --batch_size 60  --class_name /home/tonyhuy/yolov7_blister/data/blister.yaml
+
+#If not
+python inference_blisters.py  --weights /home/tonyhuy/yolov7/runs/train/yolov749/weights/last.pt --image_size 640  --device '2' --path /home/tonyhuy/yolov7_blister/blister_data/crop_img --conf_thresh 0.5 --batch_size 60  --class_name /home/tonyhuy/yolov7_blister/data/blister.yaml
+
 python detect.py --weights /home/tonyhuy/yolov7/runs/train/yolov725/weights/last.pt --device 1 --conf 0.3 --iou-thres 0.4 --img-size 320 --source /home/tonyhuy/yolov7/blister_data/images/test
 
 ```
