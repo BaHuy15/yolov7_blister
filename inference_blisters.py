@@ -268,6 +268,7 @@ def main(opt,run_image=True):
         cfg.predict(images, crop_coordinate = None, use_contrast = False)
     else:
         cap = cv2.VideoCapture(0)
+        
         while(cap.isOpened()):
             ret, frame = cap.read()
             images=[]
