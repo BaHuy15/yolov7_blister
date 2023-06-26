@@ -216,9 +216,11 @@ Yolov7_blister
     |
     |______test.py   # Test                   
     |
-    |______train.py  # Train         
+    |______train_aux.py  # Train         
     |
-    |______train_aux.py  
+    |______train.py #Train data
+    |
+    |______yolov7_pred.py # Backup file when inference_blisters.py cannot run
 
 ```                                             
 
@@ -233,6 +235,8 @@ Yolov7_blister
 # python test.py --data data/coco.yaml --img 640 --batch 32 --conf 0.001 --iou 0.65 --device 0 --weights yolov7.pt --name yolov7_640_val
 #If inference grayscale
 python inference_blisters.py --gray_scale --weights /home/tonyhuy/yolov7/runs/train/yolov749/weights/last.pt --image_size 640  --device '2' --path /home/tonyhuy/yolov7_blister/blister_data/crop_img --conf_thresh 0.5 --batch_size 60  --class_name /home/tonyhuy/yolov7_blister/data/blister.yaml
+#If you use inference_blisters.py file to infer video, set --batch_size 1 and add argument --run_video
+
 
 #If not
 python inference_blisters.py  --weights /home/tonyhuy/yolov7/runs/train/yolov749/weights/last.pt --image_size 640  --device '2' --path /home/tonyhuy/yolov7_blister/blister_data/crop_img --conf_thresh 0.5 --batch_size 60  --class_name /home/tonyhuy/yolov7_blister/data/blister.yaml
