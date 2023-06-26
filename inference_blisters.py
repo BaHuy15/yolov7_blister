@@ -247,15 +247,16 @@ def args():
     parser.add_argument('--conf_thresh', type=float, default=0.5, help='image size')
     parser.add_argument('--batch_size', type=int, default=60, help='number of batch size = number of image in inference file')
     parser.add_argument('--class_name', type=str, default='/home/tonyhuy/yolov7_blister/data/blister.yaml', help='number of batch size = number of image in inference file')
+    parser.add_argument('--run_video',action='store_true',help='Infer video')
     opt = parser.parse_args()
     return opt
 
 
-def main(opt,run_image=True):
+def main(opt):
     save_dir=save_run(opt.path)
     with open(opt.class_name, 'r') as file:
         class_name= yaml.safe_load(file)['names']
-    if run_image:
+    if opt.run_video == False:
         images=[]
         img_path=glob.glob(f'{opt.path}/*.png')
         for path in img_path:
@@ -266,9 +267,8 @@ def main(opt,run_image=True):
         cfg=Prediction(opt.gray_scale,opt.weights,class_name,img_size = opt.image_size, device = opt.device, fp16 = False, batch_size = opt.batch_size, conf_thresh=opt.conf_thresh,
                     data = data, save_dir = save_dir)
         cfg.predict(images, crop_coordinate = None, use_contrast = False)
-    else:
+    elif opt.run_video:
         cap = cv2.VideoCapture(0)
-        
         while(cap.isOpened()):
             ret, frame = cap.read()
             images=[]
@@ -282,8 +282,6 @@ def main(opt,run_image=True):
                 break
         cap.release()
         cv2.destroyAllWindows()
-
-    
 
 # demo
 if __name__=='__main__':
