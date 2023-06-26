@@ -240,6 +240,12 @@ python inference_blisters.py  --weights /home/tonyhuy/yolov7/runs/train/yolov749
 #Detect code
 python detect.py --weights /home/tonyhuy/yolov7/runs/train/yolov725/weights/last.pt --device 1 --conf 0.3 --iou-thres 0.4 --img-size 320 --source /home/tonyhuy/yolov7/blister_data/images/test
 
+#Run prediction for augmented data(grayscale image)
+python yolov7_pred.py --weights /home/tonyhuy/yolov7/runs/train/yolov749/weights/last.pt --gray_scale --device 1 --conf 0.3 --iou-thres 0.4 --img-size 640 --source /home/tonyhuy/yolov7_blister/augmented_data
+
+#Run prediction for augmented data(RGB image)
+python yolov7_pred.py --weights /home/tonyhuy/yolov7/runs/train/yolov749/weights/last.pt --device 1 --conf 0.3 --iou-thres 0.4 --img-size 640 --source /home/tonyhuy/yolov7_blister/augmented_data
+
 ```
 After running inference_blister.py,the results will be saved here:
 
