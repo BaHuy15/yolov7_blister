@@ -58,7 +58,7 @@ class Prediction():
         self.device = select_device(device)
         self.data = data
         self.fp16 = fp16
-        #================Modify=================#
+        #=======================Modify==========================#
         self.trace=True
         self.gray_scale=gray_scale # False ---> train RGB
         self.batch_size = batch_size
@@ -69,7 +69,6 @@ class Prediction():
             self.save_result = True
         else:
             self.save_result = False
-
         self.init_model()
     def init_model(self):
         self.model = attempt_load(self.weights, map_location=self.device)
@@ -110,7 +109,6 @@ class Prediction():
             image = cv2.resize(image, self.img_size, interpolation = cv2.INTER_AREA).reshape(self.img_size[0],self.img_size[1],-1)
             if use_contrast:
                 image = self.apply_constrast(image,15,15,factor_cont)
-
             x.append((image * (1/255)).transpose((2, 0, 1)))
         return np.asarray(x).astype(np.float32)
         # assert isinstance(images, list)
@@ -220,6 +218,7 @@ class Prediction():
 
         print('Speed: %.1fms ; pre-process: %.1fms, inference: %.1fms, NMS: %.1fms per %d images at shape %s'
               % (total, preprocess, inference, nms, self.batch_size, self.img_size))
+
 def save_run(path):
     # Save directory
     if path.endswith('crop_img'):
@@ -252,21 +251,38 @@ def args():
     return opt
 
 
-def main(opt):
+def main(opt,run_image=True):
     save_dir=save_run(opt.path)
     with open(opt.class_name, 'r') as file:
         class_name= yaml.safe_load(file)['names']
-    images=[]
-    img_path=glob.glob(f'{opt.path}/*.png')
-    for path in img_path:
-        img=cv2.imread(path)
-        images.append(img)
-    # images=get_image_list(path)
-    data = None#'yolov5_inference/data/coco128.yaml'
-    cfg=Prediction(opt.gray_scale,opt.weights,class_name,img_size = opt.image_size, device = opt.device, fp16 = False, batch_size = opt.batch_size, conf_thresh=opt.conf_thresh,
-                data = data, save_dir = save_dir)
+    if run_image:
+        images=[]
+        img_path=glob.glob(f'{opt.path}/*.png')
+        for path in img_path:
+            img=cv2.imread(path)
+            images.append(img)
+        # images=get_image_list(path)
+        data = None#'yolov5_inference/data/coco128.yaml'
+        cfg=Prediction(opt.gray_scale,opt.weights,class_name,img_size = opt.image_size, device = opt.device, fp16 = False, batch_size = opt.batch_size, conf_thresh=opt.conf_thresh,
+                    data = data, save_dir = save_dir)
+        cfg.predict(images, crop_coordinate = None, use_contrast = False)
+    else:
+        cap = cv2.VideoCapture(0)
+        while(cap.isOpened()):
+            ret, frame = cap.read()
+            images=[]
+            images.append(frame)
+            data = None#'yolov5_inference/data/coco128.yaml'
+            cfg=Prediction(opt.gray_scale,opt.weights,class_name,img_size = opt.image_size, device = opt.device, fp16 = False, batch_size = opt.batch_size, conf_thresh=opt.conf_thresh,
+                        data = data, save_dir = save_dir)
+            cfg.predict(images, crop_coordinate = None, use_contrast = False)
+            #   cv2.imshow('frame',frame)
+            if cv2.waitKey(1) & 0xFF == ord('q'):
+                break
+        cap.release()
+        cv2.destroyAllWindows()
+
     
-    cfg.predict(images, crop_coordinate = None, use_contrast = False)
 
 # demo
 if __name__=='__main__':
